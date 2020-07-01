@@ -19,4 +19,4 @@
     </header>
 </template>
 
-<style src="./style.scss" lang="scss" scoped></style>
+<style src="@scss/components/header" lang="scss" scoped></style>

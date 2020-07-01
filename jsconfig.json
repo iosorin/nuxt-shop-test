@@ -5,7 +5,8 @@
             "~/*": ["./src/*"],
             "@/*": ["./src/*"],
             "~~/*": ["./src/*"],
-            "@@/*": ["./src/*"]
+            "@@/*": ["./src/*"],
+            "@scss/*": ["./src/assets/scss/"],
         }
     },
     "exclude": ["node_modules", ".nuxt", "dist"]

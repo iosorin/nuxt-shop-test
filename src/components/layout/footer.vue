@@ -24,4 +24,4 @@
     </footer>
 </template>
 
-<style src="./style.scss" lang="scss" scoped></style>
+<style src="@scss/components/footer" lang="scss" scoped></style>

@@ -21,4 +21,4 @@ export default {
 };
 </script>
 
-<style src="./style.scss" lang="scss" scoped></style>
+<style src="@scss/components/product-grid" lang="scss" scoped></style>

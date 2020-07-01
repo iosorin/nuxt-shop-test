@@ -29,7 +29,7 @@ export default {
   */
     css: [
         'normalize.css',
-        '~/assets/scss'
+        '~/assets/scss/app'
     ],
     /*
   ** Plugins to load before mounting the App
@@ -72,6 +72,10 @@ export default {
                     customProperties: false
                 }
             }
+        },
+        extend (config) {
+            config.resolve.extensions = ['.js', '.json', '.vue', '.scss'];
+            config.resolve.alias['@scss'] = path.resolve(__dirname, 'src/assets/scss');
         }
     }
 };
