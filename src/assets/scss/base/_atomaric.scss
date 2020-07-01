@@ -1,25 +1,25 @@
 // text
-.f-light {
+.font-light {
     font-weight: $font-weight-light;
 }
 
-.f-regular {
+.font-regular {
     font-weight: $font-weight-regular;
 }
 
-.f-heavy {
+.font-heavy {
     font-weight: $font-weight-heavy;
 }
 
-.t-left {
+.text-left {
     text-align: left;
 }
 
-.t-right {
+.text-right {
     text-align: right;
 }
 
-.t-center {
+.text-center {
     text-align: center;
     margin-left: auto;
     margin-right: auto;
@@ -30,15 +30,27 @@
     display: flex;
 }
 
-.j-start {
+.align-start {
+    align-items: flex-start;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.align-end {
+    align-items: flex-end;
+}
+
+.justify-start {
     justify-content: start;
 }
 
-.j-center {
+.justify-center {
     justify-content: center;
 }
 
-.j-end {
+.justify-end {
     justify-content: eng;
 }
 

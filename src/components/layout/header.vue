@@ -1,22 +1,20 @@
 <template>
     <header class="header">
         <div class="container">
-            <div class="row">
+            <div class="row d-flex align-center">
                 <div class="col-6">
-                    <div class="header__logo">
-                        <span>Nuxt Shop</span>
-                    </div>
+                    <nuxt-link to="/" class="header__logo">
+                        Nuxt Shop
+                    </nuxt-link>
                 </div>
                 <div class="col-6">
-                    <div class="header__link">
-                        <n-link to="/cart">
-                            Cart
-                        </n-link>
-                    </div>
+                    <nuxt-link to="/cart" class="header__link">
+                        🛒
+                    </nuxt-link>
                 </div>
             </div>
         </div>
     </header>
 </template>
 
-<style src="@scss/components/header" lang="scss" scoped></style>
+<style src="@scss/components/layout/header" lang="scss" scoped></style>

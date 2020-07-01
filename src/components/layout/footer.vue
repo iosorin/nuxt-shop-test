@@ -4,17 +4,17 @@
             <div class="row">
                 <ul class="footer__navigation">
                     <li>
-                        <n-link to="/">
+                        <n-link to="#">
                             Privacy policy
                         </n-link>
                     </li>
                     <li>
-                        <n-link to="/">
+                        <n-link to="#">
                             Cookie policy
                         </n-link>
                     </li>
                     <li>
-                        <n-link to="/">
+                        <n-link to="#">
                             Terms & conditions
                         </n-link>
                     </li>
@@ -24,4 +24,4 @@
     </footer>
 </template>
 
-<style src="@scss/components/footer" lang="scss" scoped></style>
+<style src="@scss/components/layout/footer" lang="scss" scoped></style>

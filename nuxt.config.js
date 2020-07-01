@@ -31,6 +31,9 @@ export default {
         'normalize.css',
         '~/assets/scss/app'
     ],
+    styleResources: {
+        scss: ['~/assets/scss/helpers/index.scss']
+    },
     /*
   ** Plugins to load before mounting the App
   ** https://nuxtjs.org/guide/plugins
@@ -54,7 +57,8 @@ export default {
   */
     modules: [
         // Doc: https://axios.nuxtjs.org/usage
-        '@nuxtjs/axios'
+        '@nuxtjs/axios',
+        '@nuxtjs/style-resources'
     ],
     /*
   ** Axios module configuration

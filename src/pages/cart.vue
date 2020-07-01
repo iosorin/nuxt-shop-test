@@ -1,23 +1,21 @@
 <template>
-    <section class="section product-grid-page">
+    <section class="section">
         <div class="container">
             <div class="row">
                 <div class="section__title">
-                    <h2>Featured Products</h2>
+                    <h2>Product Cart</h2>
                 </div>
             </div>
             <div class="row">
-                <ProductGrid />
+                <CartTable />
             </div>
         </div>
     </section>
 </template>
 
 <script>
-import ProductGrid from '@/components/product/grid';
+import CartTable from '@/components/cart/table';
 export default {
-    components: {
-        ProductGrid
-    }
+    components: { CartTable }
 };
 </script>
