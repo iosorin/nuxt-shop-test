@@ -1,17 +1,14 @@
+// eslint-disable-next-line nuxt/no-cjs-in-config
+const path = require('path');
 
 export default {
-    srcDir: 'src',
+    srcDir: path.resolve(__dirname, 'src'),
 
     /*
   ** Nuxt rendering mode
   ** See https://nuxtjs.org/api/configuration-mode
   */
-    mode: 'spa',
-    /*
-  ** Nuxt target
-  ** See https://nuxtjs.org/api/configuration-target
-  */
-    target: 'static',
+    mode: 'universal',
     /*
   ** Headers of the page
   ** See https://nuxtjs.org/api/configuration-head
@@ -31,6 +28,8 @@ export default {
   ** Global CSS
   */
     css: [
+        'normalize.css',
+        '~/assets/scss'
     ],
     /*
   ** Plugins to load before mounting the App

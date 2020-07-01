@@ -1,0 +1,47 @@
+// text
+.f-light {
+    font-weight: $font-weight-light;
+}
+
+.f-regular {
+    font-weight: $font-weight-regular;
+}
+
+.f-heavy {
+    font-weight: $font-weight-heavy;
+}
+
+.t-left {
+    text-align: left;
+}
+
+.t-right {
+    text-align: right;
+}
+
+.t-center {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+// display
+.d-flex {
+    display: flex;
+}
+
+.j-start {
+    justify-content: start;
+}
+
+.j-center {
+    justify-content: center;
+}
+
+.j-end {
+    justify-content: eng;
+}
+
+.hidden-sm {
+    display: none;
+}

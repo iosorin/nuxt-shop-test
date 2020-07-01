@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.11.0",
-    "@nuxtjs/bulma": "^1.2.7",
+    "normalize.css": "^8.0.1",
     "nuxt": "^2.13.0"
   },
   "devDependencies": {
@@ -28,6 +28,8 @@
     "eslint": "^7.2.0",
     "eslint-plugin-nuxt": "^1.0.0",
     "jest": "^26.0.1",
+    "node-sass": "^4.14.1",
+    "sass-loader": "^8.0.2",
     "vue-jest": "^3.0.4"
   }
 }
