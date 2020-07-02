@@ -1,11 +1,15 @@
 import firebase from 'firebase/app';
+import config from './config';
 import 'firebase/database';
 
-import config from './config';
+if (!firebase.apps.length) {
+    firebase.initializeApp(config);
+}
 
-const firebaseApp = !firebase.apps.length
-    ? firebase.initializeApp(config)
-    : firebase.app();
+export default (context, inject) => {
+    inject('firebase', firebase);
+    inject('database', firebase.database());
+    inject('products', firebase.database().ref('products'));
 
-export const DB = firebaseApp.database();
-export default firebaseApp;
+    context.store.dispatch('products/init');
+};

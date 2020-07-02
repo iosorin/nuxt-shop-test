@@ -1,13 +1,20 @@
 import Vuex from 'vuex';
 
-import products from './modules/products';
+import modules from './modules';
+console.log('modules', modules);
 
 let store;
-
 const initStore = () => {
     return store || (store = new Vuex.Store({
-        modules: {
-            products
+        modules,
+        actions: {
+            init ({ commit }) {
+                console.log('init');
+                // resets state of all the modules
+                // Object.keys(modules).forEach((moduleName) => {
+                //     commit(`${moduleName}/RESET`);
+                // });
+            }
         }
     }));
 };
