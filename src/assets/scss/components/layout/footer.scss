@@ -12,14 +12,7 @@ $footer-background: #151515;
             margin-right: 0.5rem;
 
             a {
-                color: #fff;
                 font-weight: 300;
-                border-bottom: 1px solid transparent;
-                transition: border .27s ease;
-
-                &:hover {
-                    border-color: #fff;
-                }
             }
         }
     }

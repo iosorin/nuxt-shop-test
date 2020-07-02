@@ -1,0 +1,45 @@
+$loader-bg: linear-gradient(to top, #dfe9f3 0%, white 100%);
+$loader-opacity: .98;
+$loader-color-1: #111;
+$loader-color-2: #777;
+
+.loader {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 999999;
+    background: $loader-bg;
+    opacity: $loader-opacity;
+
+    &__spinner {
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        bottom: 50px;
+        right: 50px;
+        border-radius: 60px;
+        animation: loader 0.8s linear infinite;
+    }
+}
+
+@keyframes loader {
+    0% {
+        transform: rotate(0deg);
+        border: 4px solid $loader-color-1;
+        border-left-color: transparent;
+    }
+
+    50% {
+        transform: rotate(180deg);
+        border: 4px solid $loader-color-2;
+        border-left-color: transparent;
+    }
+
+    100% {
+        transform: rotate(360deg);
+        border: 4px solid $loader-color-1;
+        border-left-color: transparent;
+    }
+}

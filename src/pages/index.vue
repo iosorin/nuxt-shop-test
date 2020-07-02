@@ -14,14 +14,17 @@
                 </div>
             </div>
         </div>
+        <Loader />
     </section>
 </template>
 
 <script>
 import ProductGrid from '@/components/product/grid';
+import Loader from '@/components/ui/loader';
 export default {
     components: {
-        ProductGrid
+        ProductGrid,
+        Loader
     }
 };
 </script>

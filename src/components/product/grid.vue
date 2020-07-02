@@ -4,7 +4,7 @@
             <h3 v-if="suggestions">
                 Products you may like:
             </h3>
-            <span class="button">🔄</span>
+            <span class="icon-button">🔄</span>
         </div>
 
         <div class="product-grid__content">

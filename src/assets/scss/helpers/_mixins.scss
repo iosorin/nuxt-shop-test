@@ -1,18 +1,44 @@
-@mixin button-icon ($size: 40px, $color: #ddd, $fz: 18px, $text: #1c1c1c) {
+
+@mixin button-proto ($size: 40px, $bg: #ffffff, $hover: #ddd, $fz: 18px, $text: #1c1c1c, $bdrs: 2px) {
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
+    border-radius: $bdrs;
     font-size: $fz;
     color: $text;
     height: $size;
     line-height: $size;
-    width: $size;
     background: #ffffff;
     transition: background 0.27s;
     cursor: pointer;
 
     &:hover {
-        background: $color;
+        background: $hover;
     }
+}
+
+@mixin button-icon ($size: 40px, $hover: #ddd, $fz: 18px, $text: #1c1c1c, $bg: #ffffff) {
+    width: $size;
+    @include button-proto($size, $bg, $hover, $fz, $text, 50%);
+}
+
+@mixin button ($bg: #ffffff, $hover: #ddd, $h: 40px, $bdrs: 2px, $fz: 18px, $text: #1c1c1c) {
+    @include button-proto($h, $bg, $hover, $fz, $text, 2px);
+}
+
+
+@mixin bxshd($tr: .1s, $blur: 7px, $spread: 2px, $opacity: 0.15) {
+    box-shadow: $bxshd;
+    transition: box-shadow $tr ease-in-out;
+
+    &:hover {
+        box-shadow: 0px $spread $blur 1px rgba(0, 0, 0, $opacity);
+    }
+}
+
+@mixin cover() {
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: #eee;
 }

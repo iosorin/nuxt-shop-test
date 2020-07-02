@@ -32,6 +32,79 @@ body {
     }
 }
 
+.button,
+.icon-button {
+    &.bordered {
+        outline: -webkit-focus-ring-color auto 1px;
+    }
+
+    &.dark {
+        background: #151515 !important;
+        color: #fff !important;
+    }
+
+    &.inline {
+        display: inline-block !important;
+        padding: 0 1rem;
+    }
+}
+
+.link {
+    color: #fff;
+    border-bottom: 1px solid transparent;
+    transition: border .27s ease;
+
+    &:hover {
+        border-color: #fff;
+    }
+
+    &.dark {
+        color: #000;
+
+        &:hover {
+            border-color: #000;
+        }
+    }
+}
+
 .button {
+    @include button();
+
+}
+
+.icon-button {
     @include button-icon();
+}
+
+// cart page
+.delete-icon {
+    font-size: 1.2rem;
+    cursor: pointer;
+
+    &:before {
+        content: "✖" // ❌
+    }
+}
+
+.quantity {
+    display: flex;
+    width: 75%;
+
+    span {
+        background: #eee;
+        text-align: center;
+        height: 35px;
+        line-height: 35px;
+        flex: 1;
+        cursor: pointer;
+        transition: background .27s ease-out;
+        &:hover {
+            background: #ddd;
+        }
+
+        &:first-child,
+        &:last-child {
+            font-size: 20px;
+        }
+    }
 }

@@ -1,0 +1,26 @@
+.product-details {
+    // box-shadow: $bxshd;
+    box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.1);
+    display: flex;
+
+    & > div {
+        flex: 1 0 50%;
+    }
+
+    &__image {
+        @include cover();
+    }
+
+    &__info {
+        padding-left: 2.5rem;
+    }
+
+    &__quantity {
+        padding: 1rem 0;
+    }
+
+    .add-to-cart {
+        margin-top: 10px;
+        font-size: 1rem;
+    }
+}

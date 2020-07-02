@@ -13,7 +13,7 @@
                 </div>
                 <div class="product-card__actions">
                     <span class="add-to-cart">
-                        🖤
+                        🛒
                     </span>
                 </div>
             </div>
@@ -25,7 +25,7 @@
 export default {
     data () {
         return {
-            bg: 'img/2.jpg'
+            bg: '/img/2.jpg'
         };
     }
 };
