@@ -16,3 +16,11 @@
         </div>
     </section>
 </template>
+
+<script>
+export default {
+    mounted () {
+        this.$store.dispatch('test');
+    }
+};
+</script>

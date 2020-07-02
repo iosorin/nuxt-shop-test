@@ -23,6 +23,7 @@ module.exports = {
         'quote-props': [0, 'as-needed'],
         'no-unused-expressions': 2,
         'no-unused-vars': 1,
+        'no-trailing-spaces': 1,
         'indent': [
             1,
             4,
@@ -44,6 +45,7 @@ module.exports = {
                 'ignores': []
             }
         ],
+        'brace-style': [1, 'stroustrup'],
         'vue/v-bind-style': [
             'error',
             'shorthand'

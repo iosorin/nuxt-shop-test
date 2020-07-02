@@ -1,0 +1,26 @@
+/* Fade */
+.page-enter-active, .page-leave-active {
+    transition: opacity .25s;
+}
+
+.page-enter, .page-leave-active {
+    opacity: 0;
+}
+
+.loader-enter-active {
+    animation: loader-in .4s;
+}
+.loader-leave-active {
+    animation: loader-in .4s reverse;
+    animation-delay: 0.5s;
+}
+
+@keyframes loader-in {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
