@@ -1,22 +1,21 @@
 import Vuex from 'vuex';
 
-import modules from './modules';
-console.log('modules', modules);
+import cart from './modules/cart';
+import products from './modules/products';
 
-let store;
-const initStore = () => {
-    return store || (store = new Vuex.Store({
-        modules,
+const store = () => {
+    return new Vuex.Store({
+        modules: {
+            cart,
+            products
+        },
         actions: {
-            init ({ commit }) {
-                console.log('init');
-                // resets state of all the modules
-                // Object.keys(modules).forEach((moduleName) => {
-                //     commit(`${moduleName}/RESET`);
-                // });
+            async nuxtServerInit({ dispatch }) {
+                await dispatch('cart/load');
+                await dispatch('products/load');
             }
         }
-    }));
+    });
 };
 
-export default initStore;
+export default store;

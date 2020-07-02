@@ -1,6 +1,5 @@
-$footer-background: #151515;
-
 .footer {
+    height: $footer-height;
     background: $footer-background;
 
     &__navigation {
@@ -9,7 +8,7 @@ $footer-background: #151515;
         list-style-type: none;
 
         li {
-            margin-right: 0.5rem;
+            margin-right: 0.75rem;
 
             a {
                 font-weight: 300;

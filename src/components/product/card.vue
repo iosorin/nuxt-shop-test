@@ -1,18 +1,18 @@
 <template>
-    <div class="product-card">
+    <div class="product-card" :class="{ small: small }">
         <div class="product-card__inner">
-            <div class="product-card__preview" :style="{ backgroundImage: `url(${bg})` }" />
+            <div class="product-card__preview" :style="{ backgroundImage: `url(${ product.img })` }" />
             <div class="product-card__info">
                 <div class="product-card__text">
-                    <span class="product-card__title">
-                        Product Title
+                    <span class="product-card__title" :class="{ 'text-overflow': !small }">
+                        {{ product.title }}
                     </span>
                     <span class="product-card__price">
-                        $35.99
+                        {{ product.price }}
                     </span>
                 </div>
-                <div class="product-card__actions">
-                    <span class="add-to-cart">
+                <div class="product-card__action">
+                    <span @click="addToCart">
                         🛒
                     </span>
                 </div>
@@ -23,10 +23,11 @@
 
 <script>
 export default {
-    data () {
-        return {
-            bg: '/img/sweater.png'
-        };
+    props: ['product', 'small'],
+    methods: {
+        addToCart(e) {
+            e.preventDefault();
+        }
     }
 };
 </script>

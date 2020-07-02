@@ -60,6 +60,11 @@ $quantity: 225px;
 
     &__delete {
         text-align: right;
+        span {
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+        }
     }
 
     &__filter {
@@ -75,12 +80,14 @@ $quantity: 225px;
         }
 
         &:after {
-            content: '🔽'
+            content: '↟';
+            background: #eee;
+            padding: 0 4px;
         }
 
         &.up {
             &:after {
-                content: '🔼';
+                content: '↡';
             }
         }
     }

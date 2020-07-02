@@ -2,12 +2,13 @@
 $min-height: 150px;
 
 .product-card {
-    height: 100%;
-    min-height: $min-height;
+    position: relative;
     display: flex;
     flex-direction: column;
-    padding: 10px;
+    height: 100%;
+    min-height: $min-height;
     box-sizing: border-box;
+    padding: 10px;
 
     &__inner {
         height: 100%;
@@ -18,7 +19,6 @@ $min-height: 150px;
 
     &__preview {
         flex: 1;
-        position: relative;
         overflow: hidden;
         @include bg(contain);
     }
@@ -28,6 +28,10 @@ $min-height: 150px;
         display: flex;
         justify-content: space-between;
         align-items: center;
+    }
+
+    &__text {
+        width: 86%;
     }
 
     &__title,
@@ -45,12 +49,51 @@ $min-height: 150px;
         font-weight: 700;
     }
 
-    &__actions {
+    &__action {
         margin-right: 5px;
 
-        .add-to-cart {
-            @include button-icon(40px, #ccc)
+        span {
+            @include button-icon(40px, #ccc);
         }
     }
 
+    &.small {
+        .product-card {
+            &__preview {
+                background-size: cover;
+                background-position-y: 10%;
+            }
+
+            &__info {
+                font-size: 13px;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 5px 8px;
+                height: 30%;
+                overflow: hidden;
+            }
+
+            &__text {
+                display: flex;
+                flex-direction: column;
+                height: 100%;
+            }
+
+            &__price {
+                margin-top: auto;
+            }
+
+            &__action {
+                margin-right: 0;
+                position: absolute;
+                bottom: 0;
+                right: 0;
+
+                span {
+                    font-size: 15px;
+                    border: 1px solid #ddd;
+                }
+            }
+        }
+    }
 }

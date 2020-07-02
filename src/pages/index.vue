@@ -10,9 +10,21 @@
             </div>
             <div class="row">
                 <div class="col-12">
-                    <ProductGrid />
+                    <ProductGrid :products="products" :cols="3" />
                 </div>
             </div>
         </div>
     </section>
 </template>
+
+<script>
+import { mapGetters } from 'vuex';
+
+export default {
+    computed: {
+        ...mapGetters({
+            products: 'products/list'
+        })
+    }
+};
+</script>

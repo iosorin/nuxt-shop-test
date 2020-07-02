@@ -1,28 +1,30 @@
 <template>
     <div class="pagination">
         <span class="pagination__iterator">
-            1 of 2
+            {{ currentPage }} of {{ totalPages }}
         </span>
         <div class="pagination__arrows">
-            <button>◀</button>
-            <button>▶</button>
+            <button :disabled="currentPage <= 1" @click="$emit('change', false, currentPage - 1)">
+                ◀
+            </button>
+            <button :disabled="currentPage >= totalPages" @click="$emit('change', true, currentPage + 1)">
+                ▶
+            </button>
         </div>
     </div>
 </template>
 
 <script>
 export default {
-    props: ['list', 'size', 'lastItem'],
-    computed: {
-        pageCount: () => {
-            if (this?.list) {
-                return Math.ceil(this.list / this.size);
-            }
-
-            return false;
+    props: {
+        currentPage: {
+            default: 1,
+            type: Number
+        },
+        totalPages: {
+            default: 2,
+            type: Number
         }
-    },
-    mounted () {
     }
 };
 </script>

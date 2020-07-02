@@ -18,12 +18,12 @@ export default {
         Header,
         Footer
     },
-    data () {
+    data() {
         return {
             loader: true
         };
     },
-    mounted () {
+    mounted() {
         this.loader = false;
     }
 };

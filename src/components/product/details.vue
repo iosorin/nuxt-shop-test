@@ -1,15 +1,15 @@
 <template>
     <div class="product-details">
-        <div class="product-details__image" :style="{ backgroundImage: `url(${bg})` }" />
+        <div class="product-details__image" :style="{ backgroundImage: `url(${ product.img })` }" />
         <div class="product-details__info">
-            <h3>Vetgetable’s Package</h3>
+            <h3>{{ product.name }}</h3>
 
             <div class="product-details__price">
-                $50.00
+                PRICE: {{ product.price }}
             </div>
 
             <div class="product-details__description">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste dolorum repudiandae asperiores nesciunt, minima alias.
+                {{ product.description }}
             </div>
 
             <div class="product-details__quantity">
@@ -28,11 +28,7 @@
 
 <script>
 export default {
-    data () {
-        return {
-            bg: '/img/2.jpg'
-        };
-    }
+    props: ['product']
 };
 </script>
 

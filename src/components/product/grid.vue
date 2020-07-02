@@ -1,20 +1,14 @@
 <template>
-    <div class="product-grid" :class="size ? `size-${size}` : ''">
-        <div v-if="suggestions" class="product-grid__header">
-            <h3 v-if="suggestions">
-                Products you may like:
-            </h3>
-            <span class="icon-button">🔄</span>
-        </div>
-
+    <div class="product-grid">
         <div class="product-grid__content">
             <nuxt-link
-                v-for="i in size"
-                :key="i"
+                v-for="item in products"
+                :key="item.id"
+                :to="'details/' + item.id"
                 class="product-grid__item"
-                to="details/1"
+                :class="cols ? `cols-${cols}` : ''"
             >
-                <ProductCard />
+                <ProductCard :product="item" :small="cols > 4" />
             </nuxt-link>
         </div>
     </div>
@@ -22,16 +16,15 @@
 
 <script>
 import ProductCard from './card';
+
 export default {
     components: { ProductCard },
     props: {
-        size: {
-            type: Number,
-            default: 3
+        products: {
+            default: []
         },
-        suggestions: {
-            type: Boolean,
-            default: false
+        cols: {
+            default: 3
         }
     }
 };

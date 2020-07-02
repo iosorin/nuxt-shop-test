@@ -4,7 +4,7 @@
             "id": "0",
             "img": "https://cdn.fs.grailed.com/api/file/7aHktopSRQdri69OV1eo",
             "title": "Nike × Vintage × Streetwear",
-            "price": "$50",
+            "price": "50",
             "description": "Nike Tech Fleece Chief Keef Style",
             "rating": 5
         },
@@ -12,7 +12,7 @@
             "id": "1",
             "img": "https://cdn.fs.grailed.com/api/file/A4xj7uTR6TMgDShti2Ap",
             "title": "Vintage × Japanese Brand",
-            "price": "$65",
+            "price": "65",
             "description": "Vintage T&C Surf Design Waves Hoodie",
             "rating": 4.5
         },
@@ -20,7 +20,7 @@
             "id": "2",
             "img": "https://cdn.fs.grailed.com/api/file/TYHRcsxHSASoGKz7ljT0",
             "title": "Vintage × Russell Athletic × Made In Usa",
-            "price": "$40",
+            "price": "40",
             "description": "Vintage 80s 90s Russell Hoodie",
             "rating": 4.5
         },
@@ -28,7 +28,7 @@
             "id": "3",
             "img": "https://cdn.fs.grailed.com/api/file/ubjaOmG3QeelrwYh5oyb",
             "title": "Vintage × Reebok × Streetwear",
-            "price": "$50",
+            "price": "50",
             "description": "Vintage 90s Reebok Quarter Zip Fleece Uzi Style",
             "rating": 4
         },
@@ -36,7 +36,7 @@
             "id": "4",
             "img": "https://cdn.fs.grailed.com/api/file/cR95Uzc6QOeqvXSOT1Po",
             "title": "Vintage × Vision Streetwear",
-            "price": "$45",
+            "price": "45",
             "description": "Vintage 90s Vision streetwear skateboard logo",
             "rating": 3.5
         },
@@ -44,7 +44,7 @@
             "id": "5",
             "img": "https://cdn.fs.grailed.com/api/file/nojZQ8Svi7csxmukzmFw",
             "title": "Vintage × Valentino",
-            "price": "$100",
+            "price": "100",
             "description": "Vintage Claudio Valentino Embroidered Spell Out Sweatshirt",
             "rating": 3
         },
@@ -52,7 +52,7 @@
             "id": "6",
             "img": "https://cdn.fs.grailed.com/api/file/mn70MlGWSKi7dDyxSVEd",
             "title": "Vintage × Puma",
-            "price": "$32",
+            "price": "32",
             "description": "Vtg 90s Puma Hit Union Sweatshirt Large Grey",
             "rating": 3
         }

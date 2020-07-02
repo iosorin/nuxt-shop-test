@@ -1,5 +1,6 @@
-$header-background: #151515;
-
 .header {
+    display: flex;
+    align-items: center;
+    height: $header-height;
     background: $header-background;
 }

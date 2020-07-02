@@ -26,15 +26,15 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <tr v-for="item in pageProducts" :key="item.id">
                     <td class="cart-table__item">
-                        <nuxt-link to="details/:1">
-                            <img src="img/1.jpg" alt="">
-                            <h5>Vegetable’s Package</h5>
+                        <nuxt-link :to="'details/' + item.id">
+                            <img :src="item.img" :alt="item.title">
+                            <h5>{{ item.title }}</h5>
                         </nuxt-link>
                     </td>
                     <td class="cart-table__price">
-                        $55.00
+                        {{ item.price }}
                     </td>
                     <td class="cart-table__quantity">
                         <div class="quantity">
@@ -44,85 +44,58 @@
                         </div>
                     </td>
                     <td class="cart-table__date">
-                        {{ date }}
+                        {{ $utils.getElapsedTime() }}
                     </td>
                     <td class="cart-table__total">
                         $110.00
                     </td>
                     <td class="cart-table__delete">
-                        <span class="delete-icon" />
-                    </td>
-                </tr>
-                <tr>
-                    <td class="cart-table__item">
-                        <nuxt-link to="details/:2">
-                            <img src="img/2.jpg" alt="">
-                            <h5>Vegetable’s Package</h5>
-                        </nuxt-link>
-                    </td>
-                    <td class="cart-table__price">
-                        $55.00
-                    </td>
-                    <td class="cart-table__quantity">
-                        <div class="quantity">
-                            <span>-</span>
-                            <span>1</span>
-                            <span>+</span>
-                        </div>
-                    </td>
-                    <td class="cart-table__date">
-                        {{ date }}
-                    </td>
-                    <td class="cart-table__total">
-                        $110.00
-                    </td>
-                    <td class="cart-table__delete">
-                        <span class="delete-icon" />
+                        <span class="delete-icon icon-button" @click="removeItem" />
                     </td>
                 </tr>
             </tbody>
         </table>
 
         <div class="cart-table__pagination">
-            <Pagination />
+            <Pagination :total-pages="totalPages" :current-page="currentPage" @change="changePage" />
         </div>
     </div>
 </template>
 
 <script>
-import Pagination from '@/components/ui/pagination';
 export default {
-    components: { Pagination },
-    data () {
+    props: {
+        products: {
+            default: []
+        },
+        perPage: {
+            default: 2
+        }
+    },
+    data() {
         return {
-            date: '',
+            dateUp: true,
             priceUp: true,
             totalPriceUp: true,
-            dateUp: true
-
+            currentPage: 1,
+            pageProducts: []
         };
     },
-    mounted () {
-        this.date = this.getTime();
+    computed: {
+        totalPages() {
+            return Math.ceil(this.products.length / this.perPage);
+        }
+    },
+    mounted() {
+        this.pageProducts = [...this.products].splice(0, this.perPage);
     },
     methods: {
-        getTime () {
-            const copyTms = 1593650184506;
-            const currentTms = Date.now();
-
-            if (copyTms) {
-                const { hours, minutes, seconds } = this.$utils.calcDate(currentTms, copyTms);
-
-                if (hours) {
-                    return `${hours} h.`;
-                }
-
-                if (minutes) {
-                    return `${minutes} m.`;
-                }
-
-                return `${seconds} s.`;
-            }
+        changePage(forward, page) {
+            this.currentPage = page;
+            this.pageProducts = [...this.products].slice((page - 1) * this.perPage, page * this.perPage);
+        },
+        removeItem(e) {
+            console.log(e);
         }
     }
 };

@@ -4,7 +4,7 @@
             <div class="row d-flex align-center">
                 <div class="col-6">
                     <nuxt-link to="/" class="header__logo link">
-                        Nuxt Shop
+                        NUXT SHOP
                     </nuxt-link>
                 </div>
                 <div class="col-6 text-right">

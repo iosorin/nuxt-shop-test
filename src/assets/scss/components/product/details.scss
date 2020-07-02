@@ -3,24 +3,45 @@
     box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.1);
     display: flex;
 
-    & > div {
-        flex: 1 0 50%;
-    }
-
     &__image {
         @include bg(cover);
+        background-position-y: 25%;
+        width: 60%;
     }
 
     &__info {
-        padding-left: 2.5rem;
+        flex: 1;
+        padding: 0 2.5rem;
+        position: relative;
+        overflow: hidden;
+
+        > *:nth-child(2n + 1) {
+            margin: 1rem 0;
+        }
+
+        &::before {
+            content: '🕸';
+            font-size: 32rem;
+            position: absolute;
+            bottom: -42%;
+            right: -30%;
+            z-index: -1;
+            color: rgba(0, 0, 0, 0.2);
+        }
     }
 
-    &__quantity {
-        padding: 1rem 0;
+
+    &__price {
+        font-weight: bold;
+        border-bottom: 2px solid #000;
+    }
+
+    &__description {
+        border: 2px solid #000;
+        padding: 0.5rem;
     }
 
     .add-to-cart {
-        margin-top: 10px;
         font-size: 1rem;
     }
 }

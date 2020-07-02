@@ -57,3 +57,9 @@
 .hidden-sm {
     display: none;
 }
+
+.text-overflow {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}

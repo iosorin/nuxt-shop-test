@@ -34,6 +34,8 @@ module.exports = {
                 'SwitchCase': 1
             }
         ],
+        'brace-style': [1, 'stroustrup'],
+        'space-before-function-paren': ['error', 'never'],
         'vue/max-attributes-per-line': 0,
         'vue/require-prop-types': 0,
         'vue/html-indent': [
@@ -45,7 +47,6 @@ module.exports = {
                 'ignores': []
             }
         ],
-        'brace-style': [1, 'stroustrup'],
         'vue/v-bind-style': [
             'error',
             'shorthand'
