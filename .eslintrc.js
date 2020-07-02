@@ -34,6 +34,7 @@ module.exports = {
             }
         ],
         'vue/max-attributes-per-line': 0,
+        'vue/require-prop-types': 0,
         'vue/html-indent': [
             1, 4, {
                 'attribute': 1,
@@ -42,6 +43,10 @@ module.exports = {
                 'alignAttributesVertically': false,
                 'ignores': []
             }
+        ],
+        'vue/v-bind-style': [
+            'error',
+            'shorthand'
         ]
     }
 };

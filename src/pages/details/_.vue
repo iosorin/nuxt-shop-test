@@ -1,14 +1,14 @@
 <template>
-    <section class="section">
+    <section class="section product-details-page">
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <CartTable />
+                    <ProductDetails />
                 </div>
             </div>
             <div class="row">
                 <div class="col-12">
-                    <ProductGrid :suggestions="true" :size="4" />
+                    <ProductGrid :suggestions="true" />
                 </div>
             </div>
         </div>
@@ -16,11 +16,12 @@
 </template>
 
 <script>
-import CartTable from '@/components/cart/table';
 import ProductGrid from '@/components/product/grid';
-
+import ProductDetails from '@/components/product/details';
 export default {
-    components: { CartTable, ProductGrid }
+    components: {
+        ProductGrid,
+        ProductDetails
+    }
 };
-
 </script>

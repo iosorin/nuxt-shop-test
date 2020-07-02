@@ -1,0 +1,23 @@
+.pagination {
+    display: flex;
+    justify-content: flex-end;
+    margin: 1rem 0 1rem auto;
+
+    &__arrows {
+        margin-left: 0.75rem;
+
+        button {
+            border: none;
+            outline: none;
+            padding: .25rem .5rem;
+
+            &:not(:disabled) {
+                cursor: pointer;
+            }
+
+            &:not(:last-child) {
+                margin-right: .35rem;
+            }
+        }
+    }
+}

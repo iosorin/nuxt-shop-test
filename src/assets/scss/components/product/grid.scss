@@ -1,9 +1,29 @@
+@mixin grid-size($size) {
+    .product-grid__item {
+        flex: 1 0 100 / $size * 1%;
+        max-width: 100 / $size * 1%;
+    }
+}
+
 .product-grid {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+
+    &__header {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+
+        .button {
+            width: 45px;
+            height: 45px;
+            line-height: 45px;
+            font-size: 23px;
+        }
+    }
 
     &__content {
         width: 100%;
@@ -14,7 +34,26 @@
     }
 
     &__item {
-        flex: 1 0 33%;
-        max-width: 50%;
+        @include grid-size(3);
+        height: 280px;
+    }
+
+    &.size-1 {
+        @include grid-size(1);
+    }
+    &.size-2 {
+        @include grid-size(2);
+    }
+    &.size-3 {
+        @include grid-size(3);
+    }
+    &.size-4 {
+        @include grid-size(4);
+    }
+    &.size-5 {
+        @include grid-size(5);
+    }
+    &.size-6 {
+        @include grid-size(6);
     }
 }

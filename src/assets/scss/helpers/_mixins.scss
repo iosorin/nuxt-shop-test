@@ -10,6 +10,7 @@
     width: $size;
     background: #ffffff;
     transition: background 0.27s;
+    cursor: pointer;
 
     &:hover {
         background: $color;
