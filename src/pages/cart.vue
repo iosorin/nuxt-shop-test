@@ -17,10 +17,9 @@
 
 <script>
 import CartTable from '@/components/cart/table';
-import ProductGrid from '@/components/product/grid';
 
 export default {
-    components: { CartTable, ProductGrid }
+    components: { CartTable }
 };
 
 </script>

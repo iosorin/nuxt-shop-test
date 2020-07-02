@@ -36,9 +36,10 @@
     }
 }
 
-@mixin cover() {
+
+@mixin bg($size: cover) {
+    background-size: $size;
     background-position: center center;
-    background-size: cover;
     background-repeat: no-repeat;
     background-color: #eee;
 }

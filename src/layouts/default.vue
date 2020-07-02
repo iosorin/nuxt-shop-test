@@ -1,5 +1,8 @@
 <template>
     <div class="app">
+        <transition name="loader">
+            <Loader v-if="loader" />
+        </transition>
         <Header />
         <Nuxt />
         <Footer />
@@ -14,6 +17,14 @@ export default {
     components: {
         Header,
         Footer
+    },
+    data () {
+        return {
+            loader: true
+        };
+    },
+    mounted () {
+        this.loader = false;
     }
 };
 </script>

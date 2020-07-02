@@ -25,7 +25,7 @@
 export default {
     data () {
         return {
-            bg: '/img/2.jpg'
+            bg: '/img/sweater.png'
         };
     }
 };

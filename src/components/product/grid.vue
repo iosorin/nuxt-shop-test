@@ -12,7 +12,7 @@
                 v-for="i in size"
                 :key="i"
                 class="product-grid__item"
-                to="#"
+                to="details/1"
             >
                 <ProductCard />
             </nuxt-link>
