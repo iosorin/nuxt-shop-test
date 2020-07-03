@@ -6,7 +6,7 @@
                 :key="item.id"
                 :to="'details/' + item.id"
                 class="product-grid__item"
-                :class="cols ? `cols-${cols}` : ''"
+                :class="[cols ? `cols-${cols}` : '', disabledItem(item.id) ? 'disabled': '']"
             >
                 <ProductCard :product="item" :small="cols > 4" />
             </nuxt-link>
@@ -15,6 +15,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import ProductCard from './card';
 
 export default {
@@ -26,6 +27,11 @@ export default {
         cols: {
             default: 3
         }
+    },
+    computed: {
+        ...mapGetters({
+            disabledItem: 'products/disabledItem'
+        })
     }
 };
 </script>

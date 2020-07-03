@@ -38,7 +38,7 @@ export default {
     },
 
     actions: {
-        async get({ commit }) {
+        async get({ commit, dispatch }) {
             try {
                 const value = await this.$cart.once('value');
                 const data = value.val();
@@ -47,10 +47,15 @@ export default {
                     const { products: productsData, amount = 0, count = 0 } = data;
 
                     const products = [];
-                    Object.keys(productsData).forEach((key) => {
-                        const product = new CartProduct(productsData[key]);
-                        products.push(product);
-                    });
+                    if (productsData) {
+                        Object.keys(productsData).forEach((key) => {
+                            const product = new CartProduct(productsData[key]);
+                            products.push(product);
+                        });
+                    }
+                    else {
+                        await dispatch('setTotal', { count: 0, amount: 0 });
+                    }
 
                     commit('GET', { products });
                     commit('SET_TOTAL', { amount, count });
@@ -61,25 +66,26 @@ export default {
             }
         },
 
-        async add({ state, commit }, payload) {
+        async add({ state, commit, dispatch }, payload) {
             try {
                 const { productID, quantity = 1, price } = payload;
                 const total = quantity * (price.split('$')[1]);
                 const item = new CartProduct({ productID, price, quantity, total });
 
+                let id;
                 for (let i = 0; i < quantity; i++) {
                     const data = await this.$cart.child('products').push(item);
-                    const product = { ...item, id: data.key };
-                    commit('ADD', { product });
+                    // get only last key
+                    id = data.key;
                 }
 
-                // TODO: check if it is the same product
                 const amount = state.amount + total;
                 const count = state.count + quantity;
+                await dispatch('setTotal', { count, amount });
 
-                await this.$cart.child('count').set(count);
-                await this.$cart.child('amount').set(amount);
-
+                // TODO: check if it is the same product
+                const product = { ...item, id };
+                commit('ADD', { product });
                 commit('SET_TOTAL', { count, amount });
             }
             catch (error) {
@@ -103,6 +109,18 @@ export default {
             catch (error) {
                 console.log(error);
             }
+        },
+
+        async setTotal({ commit }, { count, amount }) {
+            try {
+                await this.$cart.child('count').set(count);
+                await this.$cart.child('amount').set(amount);
+
+                commit('SET_TOTAL', { count, amount });
+            }
+            catch (error) {
+                console.log(error);
+            }
         }
     },
 
@@ -110,7 +128,12 @@ export default {
         count: state => state.count,
         amount: state => state.amount,
         list: state => state.products,
-        merged(_, { list }, { products }) {
+
+        alreadyUsed(_, { list }) {
+            return list.map(i => i.productID);
+        },
+
+        merged(state, { list }, { products }) {
             return list.map((cartInstance) => {
                 const productInstance = products.list.find((item) => {
                     return item.id === cartInstance.productID;

@@ -103,8 +103,13 @@ body {
         flex: 1;
         cursor: pointer;
         transition: background .27s ease-out;
+
         &:hover {
             background: #ddd;
+        }
+
+        &::selection {
+            background: #eee;
         }
 
         &:first-child,

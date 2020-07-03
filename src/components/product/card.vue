@@ -1,5 +1,5 @@
 <template>
-    <div class="product-card" :class="{ small: small }">
+    <div class="product-card" :class="{ small: small, disabled: isDisabled }">
         <div class="product-card__inner">
             <div class="product-card__preview" :style="{ backgroundImage: `url(${ product.img })` }" />
             <div class="product-card__info">
@@ -28,7 +28,11 @@ export default {
         async addProduct(e) {
             e.preventDefault();
 
-            const product = { ...this.product, productID: this.product.id };
+            const product = {
+                ...this.product,
+                productID: this.product.id
+            };
+
             delete product.id;
             await this.$store.dispatch('cart/add', product);
         }

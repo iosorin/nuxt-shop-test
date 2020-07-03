@@ -42,6 +42,20 @@ export default {
     },
 
     getters: {
-        list: state => state.list
+        list: state => state.list,
+
+        available(state, { list }, rootState, rootGetters) {
+            const alreadyUsed = rootGetters['cart/alreadyUsed'];
+
+            return list.filter((productInstance) => {
+                // eslint-disable-next-line eqeqeq
+                return !alreadyUsed.find(cartInstanceID => productInstance.id == cartInstanceID);
+            });
+        },
+
+        disabledItem: (state, { available }) => (id) => {
+            // eslint-disable-next-line eqeqeq
+            return !available.find(el => el.id == id);
+        }
     }
 };
