@@ -8,12 +8,16 @@
     color: $text;
     height: $size;
     line-height: $size;
-    background: #ffffff;
-    transition: background 0.27s;
+    background: $bg;
+    transition: background 0.3s;
     cursor: pointer;
 
     &:hover {
         background: $hover;
+    }
+
+    &:active {
+        background: $bg;
     }
 }
 

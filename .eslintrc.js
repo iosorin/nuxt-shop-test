@@ -38,6 +38,7 @@ module.exports = {
         'space-before-function-paren': ['error', 'never'],
         'vue/max-attributes-per-line': 0,
         'vue/require-prop-types': 0,
+        'vue/no-use-v-if-with-v-for': 'off',
         'vue/html-indent': [
             1, 4, {
                 'attribute': 1,

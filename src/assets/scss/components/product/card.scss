@@ -53,7 +53,7 @@ $min-height: 150px;
         margin-right: 5px;
 
         span {
-            @include button-icon(40px, #ccc);
+            @include button-icon(35px, #ccc, 25px);
         }
     }
 

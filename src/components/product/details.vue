@@ -14,13 +14,13 @@
 
             <div class="product-details__quantity">
                 <div class="quantity">
-                    <span>-</span>
-                    <span>1</span>
-                    <span>+</span>
+                    <span @click="quantity--">-</span>
+                    <span>{{ quantity }}</span>
+                    <span @click="quantity++">+</span>
                 </div>
             </div>
 
-            <span class="button dark inline add-to-cart">ADD TO CARD</span>
+            <span class="button dark inline add-to-cart" @click="addProduct">ADD TO CARD</span>
         </div>
     </div>
     </div>
@@ -28,7 +28,28 @@
 
 <script>
 export default {
-    props: ['product']
+    props: ['product'],
+
+    data() {
+        return {
+            quantity: 1
+        };
+    },
+
+    methods: {
+        async addProduct(e) {
+            e.preventDefault();
+
+            const product = {
+                ...this.product,
+                quantity: this.quantity,
+                productID: this.product.id
+            };
+
+            delete product.id;
+            await this.$store.dispatch('cart/add', product);
+        }
+    }
 };
 </script>
 

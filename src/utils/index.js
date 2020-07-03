@@ -28,22 +28,21 @@ const calcDate = (start, end) => {
     return { hours, minutes, seconds };
 };
 
-const getElapsedTime = () => {
-    const copyTms = 1593650184506;
+const getElapsedTime = (createdTms) => {
     const currentTms = Date.now();
 
-    if (copyTms) {
-        const { hours, minutes, seconds } = calcDate(currentTms, copyTms);
+    if (createdTms) {
+        const { hours, minutes, seconds } = calcDate(currentTms, createdTms);
 
         if (hours) {
-            return `${hours} h.`;
+            return `${hours}h. ${minutes}m`;
         }
 
         if (minutes) {
-            return `${minutes} m.`;
+            return `${minutes}m. ${seconds}s.`;
         }
 
-        return `${seconds} s.`;
+        return `${seconds}s.`;
     }
 };
 

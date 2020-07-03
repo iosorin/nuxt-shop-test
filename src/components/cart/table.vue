@@ -26,7 +26,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="item in pageProducts" :key="item.id">
+                <tr v-for="item in products" :key="item.id">
                     <td class="cart-table__item">
                         <nuxt-link :to="'details/' + item.id">
                             <img :src="item.img" :alt="item.title">
@@ -44,21 +44,27 @@
                         </div>
                     </td>
                     <td class="cart-table__date">
-                        {{ $utils.getElapsedTime() }}
+                        {{ $utils.getElapsedTime(item.date) }}
                     </td>
                     <td class="cart-table__total">
-                        $110.00
+                        ${{ item.total }}
                     </td>
                     <td class="cart-table__delete">
-                        <span class="delete-icon icon-button" @click="removeItem" />
+                        <span class="delete-icon icon-button" @click="removeProduct(item)" />
                     </td>
                 </tr>
             </tbody>
         </table>
 
         <div class="cart-table__footer">
-            <h5>Total: {{ cartTotal }}</h5>
-            <Pagination :total-pages="totalPages" :current-page="currentPage" @change="changePage" />
+            <span>Total: ${{ cartAmount }}</span>
+
+            <Pagination
+                v-if="needPagination"
+                :total-pages="totalPages"
+                :current-page="currentPage"
+                @change="getCurrentPageList"
+            />
         </div>
     </div>
 </template>
@@ -68,7 +74,7 @@ import { mapGetters } from 'vuex';
 
 export default {
     props: {
-        products: {
+        list: {
             default: []
         },
         perPage: {
@@ -81,27 +87,51 @@ export default {
             priceUp: true,
             totalPriceUp: true,
             currentPage: 1,
-            pageProducts: []
+            products: [],
+            needPagination: false
+
         };
     },
     computed: {
-        totalPages() {
-            return Math.ceil(this.products.length / this.perPage);
-        },
         ...mapGetters({
-            cartTotal: 'cart/total'
-        })
+            cartAmount: 'cart/amount'
+        }),
+        totalPages() {
+            return Math.ceil(this.list.length / this.perPage);
+        }
+    },
+    watch: {
+        list(newValue, oldValue) {
+            this.updateProductList(newValue);
+        }
     },
     mounted() {
-        this.pageProducts = [...this.products].splice(0, this.perPage);
+        this.products = [...this.list];
+        this.updateProductList(this.products);
     },
     methods: {
-        changePage(forward, page) {
-            this.currentPage = page;
-            this.pageProducts = [...this.products].slice((page - 1) * this.perPage, page * this.perPage);
+        updateProductList(list) {
+            this.needPagination = list.length > this.perPage;
+
+            if (this.needPagination) {
+                this.getCurrentPageList(this.currentPage);
+            }
+            else {
+                this.products = this.list;
+            }
         },
-        removeItem(e) {
-            console.log(e);
+
+        getCurrentPageList(page) {
+            this.currentPage = page;
+            this.products = this.list.slice((page - 1) * this.perPage, page * this.perPage);
+        },
+
+        async removeProduct(item) {
+            await this.$store.dispatch('cart/remove', item);
+
+            if (this.currentPage > 1) {
+                this.updateProductList(1);
+            }
         }
     }
 };

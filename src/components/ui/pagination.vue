@@ -4,10 +4,10 @@
             {{ currentPage }} of {{ totalPages }}
         </span>
         <div class="pagination__arrows">
-            <button :disabled="currentPage <= 1" @click="$emit('change', false, currentPage - 1)">
+            <button :disabled="currentPage <= 1" @click="$emit('change', currentPage - 1)">
                 ◀
             </button>
-            <button :disabled="currentPage >= totalPages" @click="$emit('change', true, currentPage + 1)">
+            <button :disabled="currentPage >= totalPages" @click="$emit('change', currentPage + 1)">
                 ▶
             </button>
         </div>

@@ -3,4 +3,8 @@
     align-items: center;
     height: $header-height;
     background: $header-background;
+
+    span {
+        color: white;
+    }
 }

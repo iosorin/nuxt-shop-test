@@ -12,8 +12,8 @@
                     </span>
                 </div>
                 <div class="product-card__action">
-                    <span @click="addToCart">
-                        🛒
+                    <span @click="addProduct">
+                        +
                     </span>
                 </div>
             </div>
@@ -25,8 +25,12 @@
 export default {
     props: ['product', 'small'],
     methods: {
-        addToCart(e) {
+        async addProduct(e) {
             e.preventDefault();
+
+            const product = { ...this.product, productID: this.product.id };
+            delete product.id;
+            await this.$store.dispatch('cart/add', product);
         }
     }
 };
