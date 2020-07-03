@@ -18,25 +18,25 @@ export default {
     },
 
     mutations: {
-        LOAD(state, payload) {
+        GET(state, payload) {
             state.list = payload;
         }
     },
 
     actions: {
-        async load({ commit }) {
+        async get({ commit }) {
             const value = await this.$products.once('value');
-            const products = value.val();
+            const data = value.val();
 
-            if (products) {
-                const productsArray = [];
+            if (data) {
+                const products = [];
 
-                Object.keys(products).forEach((key) => {
-                    const product = new Product(products[key]);
-                    productsArray.push(product);
+                Object.keys(data).forEach((key) => {
+                    const product = new Product(data[key]);
+                    products.push(product);
                 });
 
-                commit('LOAD', productsArray);
+                commit('GET', products);
             }
         }
     },

@@ -15,7 +15,7 @@
                     <th :class="[{ 'cart-table__filter': true }, dateUp ? 'up' : '']"
                         @click="dateUp = !dateUp"
                     >
-                        Time Passed
+                        Was Added
                     </th>
                     <th :class="[{ 'cart-table__filter': true }, totalPriceUp ? 'up' : '']"
                         @click="totalPriceUp = !totalPriceUp"
@@ -56,13 +56,16 @@
             </tbody>
         </table>
 
-        <div class="cart-table__pagination">
+        <div class="cart-table__footer">
+            <h5>Total: {{ cartTotal }}</h5>
             <Pagination :total-pages="totalPages" :current-page="currentPage" @change="changePage" />
         </div>
     </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
     props: {
         products: {
@@ -84,7 +87,10 @@ export default {
     computed: {
         totalPages() {
             return Math.ceil(this.products.length / this.perPage);
-        }
+        },
+        ...mapGetters({
+            cartTotal: 'cart/total'
+        })
     },
     mounted() {
         this.pageProducts = [...this.products].splice(0, this.perPage);

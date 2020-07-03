@@ -11,8 +11,8 @@ const store = () => {
         },
         actions: {
             async nuxtServerInit({ dispatch }) {
-                await dispatch('cart/load');
-                await dispatch('products/load');
+                await dispatch('cart/get');
+                await dispatch('products/get');
             }
         }
     });

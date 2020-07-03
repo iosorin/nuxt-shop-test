@@ -36,6 +36,9 @@ export default {
 
             return list.slice(0, 5);
         }
+    },
+    mounted() {
+        console.log(this.$store);
     }
 };
 </script>
