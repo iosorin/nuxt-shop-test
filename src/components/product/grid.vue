@@ -6,7 +6,7 @@
                 :key="item.id"
                 :to="'details/' + item.id"
                 class="product-grid__item"
-                :class="[cols ? `cols-${cols}` : '', disabledItem(item.id) ? 'disabled': '']"
+                :class="[cols ? `cols-${cols}` : '', productInUse(item.id) ? 'disabled': '']"
             >
                 <ProductCard :product="item" :small="cols > 4" />
             </nuxt-link>
@@ -30,7 +30,7 @@ export default {
     },
     computed: {
         ...mapGetters({
-            disabledItem: 'products/disabledItem'
+            productInUse: 'products/productInUse'
         })
     }
 };

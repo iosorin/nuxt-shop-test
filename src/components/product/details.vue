@@ -12,7 +12,7 @@
                 {{ product.description }}
             </div>
 
-            <div class="product-details__quantity">
+            <div v-if="!productInUse(product.id)" class="product-details__quantity">
                 <div class="quantity">
                     <span @click="quantity--">-</span>
                     <span>{{ quantity }}</span>
@@ -20,22 +20,26 @@
                 </div>
             </div>
 
-            <span class="button dark inline add-to-cart" @click="addProduct">ADD TO CARD</span>
+            <span v-if="!productInUse(product.id)" class="button dark inline add-to-cart" @click="addProduct">ADD TO CARD</span>
         </div>
     </div>
     </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 export default {
     props: ['product'],
-
     data() {
         return {
             quantity: 1
         };
     },
-
+    computed: {
+        ...mapGetters({
+            productInUse: 'products/productInUse'
+        })
+    },
     methods: {
         async addProduct(e) {
             e.preventDefault();

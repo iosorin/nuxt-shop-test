@@ -1,5 +1,5 @@
 <template>
-    <div class="product-card" :class="{ small: small, disabled: isDisabled }">
+    <div class="product-card" :class="{ small: small }">
         <div class="product-card__inner">
             <div class="product-card__preview" :style="{ backgroundImage: `url(${ product.img })` }" />
             <div class="product-card__info">

@@ -34,6 +34,12 @@ export default {
         SET_TOTAL(state, { amount, count } = {}) {
             state.amount = amount;
             state.count = count;
+        },
+
+        UPDATE_QUANTITY(state, { id, quantity }) {
+            const product = state.products.find(product => product.id);
+            product.quantity = quantity;
+            product.total = quantity * (product.price.split('$')[1]);
         }
     },
 
@@ -105,6 +111,16 @@ export default {
 
                 commit('REMOVE', { id: payload.id });
                 commit('SET_TOTAL', { count, amount });
+            }
+            catch (error) {
+                console.log(error);
+            }
+        },
+
+        async updateQuantity({ commit }, { id, quantity }) {
+            try {
+                await this.$cart.child('products').child(id).update({ quantity });
+                commit('UPDATE_QUANTITY', { id, quantity });
             }
             catch (error) {
                 console.log(error);

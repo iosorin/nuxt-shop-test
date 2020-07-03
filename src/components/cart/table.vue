@@ -7,18 +7,18 @@
                         Products
                     </th>
                     <th :class="[{ 'cart-table__filter': true }, priceUp ? 'up' : '']"
-                        @click="priceUp = !priceUp"
+                        @click="sortTable('price', 'priceUp')"
                     >
                         Price
                     </th>
                     <th>Quantity</th>
                     <th :class="[{ 'cart-table__filter': true }, dateUp ? 'up' : '']"
-                        @click="dateUp = !dateUp"
+                        @click="sortTable('date', 'dateUp')"
                     >
-                        Was Added
+                        Created
                     </th>
                     <th :class="[{ 'cart-table__filter': true }, totalPriceUp ? 'up' : '']"
-                        @click="totalPriceUp = !totalPriceUp"
+                        @click="sortTable('total', 'totalPriceUp')"
                     >
                         Total
                     </th>
@@ -28,7 +28,7 @@
             <tbody>
                 <tr v-for="item in products" :key="item.id">
                     <td class="cart-table__item">
-                        <nuxt-link :to="'details/' + item.id">
+                        <nuxt-link :to="'details/' + item.productID">
                             <img :src="item.img" :alt="item.title">
                             <h5>{{ item.title }}</h5>
                         </nuxt-link>
@@ -38,13 +38,13 @@
                     </td>
                     <td class="cart-table__quantity">
                         <div class="quantity">
-                            <span>-</span>
-                            <span>1</span>
-                            <span>+</span>
+                            <span @click="updateQuantity(item.id, item.quantity - 1)">-</span>
+                            <span>{{ item.quantity }}</span>
+                            <span @click="updateQuantity(item.id, item.quantity + 1)">+</span>
                         </div>
                     </td>
                     <td class="cart-table__date">
-                        {{ $utils.getElapsedTime(item.date) }}
+                        {{ $utils.getElapsedTime(item.date) }} ago
                     </td>
                     <td class="cart-table__total">
                         ${{ item.total }}
@@ -65,6 +65,10 @@
                 :current-page="currentPage"
                 @change="getCurrentPageList"
             />
+        </div>
+
+        <div class="button" :class="{ dark: showAll }" @click="togglePagination">
+            {{ showAll ? 'Hide': 'Show All' }}
         </div>
     </div>
 </template>
@@ -88,7 +92,8 @@ export default {
             totalPriceUp: true,
             currentPage: 1,
             products: [],
-            needPagination: false
+            needPagination: false,
+            showAll: false
 
         };
     },
@@ -102,7 +107,9 @@ export default {
     },
     watch: {
         list(newValue, oldValue) {
-            this.updateProductList(newValue);
+            if (newValue.length !== oldValue.length) {
+                this.updateProductList(newValue);
+            }
         }
     },
     mounted() {
@@ -132,6 +139,45 @@ export default {
             if (this.currentPage > 1) {
                 this.updateProductList(1);
             }
+        },
+
+        async updateQuantity(id, quantity = 1) {
+            if (quantity < 1) {
+                quantity = 1;
+            }
+
+            await this.$store.dispatch('cart/updateQuantity', { id, quantity });
+        },
+
+        togglePagination() {
+            console.log('togglePagination');
+            this.products = this.list;
+            this.showAll = !this.showAll;
+            this.needPagination = !this.showAll;
+
+            if (this.needPagination) {
+                this.getCurrentPageList(this.currentPage);
+            }
+        },
+
+        sortTable(sortKey, stateKey) {
+            this[stateKey] = !this[stateKey];
+
+            this.products = this.products.sort((a, b) => {
+                let prop1 = a[sortKey];
+                let prop2 = b[sortKey];
+
+                if (sortKey === 'price') {
+                    prop1 = (prop1.split('$')[1]);
+                    prop2 = (prop2.split('$')[1]);
+                }
+
+                if (this[stateKey]) {
+                    return prop1 > prop2 ? 1 : -1;
+                }
+
+                return prop1 > prop2 ? -1 : 1;
+            });
         }
     }
 };

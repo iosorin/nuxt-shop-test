@@ -53,7 +53,7 @@ export default {
             });
         },
 
-        disabledItem: (state, { available }) => (id) => {
+        productInUse: (state, { available }) => (id) => {
             // eslint-disable-next-line eqeqeq
             return !available.find(el => el.id == id);
         }
